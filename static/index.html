@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+</head>
+<body>
+<input type="text" name="q"
+    hx-get="/search"
+    hx-trigger="keyup changed delay:500ms"
+    hx-target="#search-results"
+    placeholder="Search..."
+>
+<div>
+    <br>
+<div id="search-results"></div>
+    <br>
+<form hx-post="/add-user" hx-target="#user-added">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="John Doe"><br>
+    <label for="email">email:</label><br>
+    <input type="text" id="email" name="email" value="john_doe@example.com"><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br>
+<div id="user-added"></div> 
+<br>
+<form hx-post="/add-json-user" hx-ext='json-enc', hx-target="#user-added">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="John Doe"><br>
+    <label for="email">email:</label><br>
+    <input type="text" id="email" name="email" value="john_doe@example.com"><br><br>
+    <input type="submit" value="Submit">
+</form>
+</div>  
+</body>
+</html>
